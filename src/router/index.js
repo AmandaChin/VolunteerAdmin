@@ -86,7 +86,7 @@ export const asyncRouterMap = [
       component: () => import('@/views/authority/AdminAuthority'), 
       name: 'AdminAuthority', 
       meta: { 
-        title: '超管管理', 
+        title: '管理员管理', 
         icon:'people',
         roles: ['Superadmin']  
       }},
@@ -94,10 +94,22 @@ export const asyncRouterMap = [
       component: () => import('@/views/authority/AdminAuthority2'), 
       name: 'AdminAuthority2', 
       meta: { 
-        title: 'A管管理', 
+        title: '管理员管理', 
         icon:'people',
         roles: ['Aadmin']  
-      }}
+      }},
+      {
+        path: 'error',
+        component: () => import('@/views/errorPage/401'),
+        name: 'error',
+        meta: { 
+          title: '管理员管理', 
+          icon: 'people', 
+          noCache: true,
+          roles: ['Badmin']  
+         }
+         
+      }
     ]
   },
   {

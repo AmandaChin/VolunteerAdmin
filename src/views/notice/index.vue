@@ -85,7 +85,7 @@ import port from '../../utils/manage'
       }
     },
     created(){
-      var id = JSON.parse(localStorage.getItem('volunteerid'))
+      var id = JSON.parse(localStorage.getItem('adminid'))
       console.log('全局：'+id)
       global.global_userID = id
     },

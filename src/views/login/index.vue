@@ -106,7 +106,7 @@ export default {
         (res) => {
           global.global_userID = res.data.UserID
           //this.$store.dispatch('StoreID',res.data.UserID)
-          //localStorage.setItem('volunteerid', JSON.stringify(res.data.UserID));
+          localStorage.setItem('adminid', JSON.stringify(res.data.UserID));
           console.log(res)
         }
       ).catch((err) => {

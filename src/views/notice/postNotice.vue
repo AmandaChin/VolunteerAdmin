@@ -95,6 +95,9 @@ export default {
     }
   },
   created() {
+    var id = JSON.parse(localStorage.getItem('adminid'))
+    console.log('全局：'+id)
+    global.global_userID = id
     if (this.isEdit) {
       const id = this.$route.params && this.$route.params.id
       this.fetchData(id)
@@ -136,7 +139,7 @@ export default {
           else {
             this.HandleUserLists(this.userData)
             let that = this;
-            params.append('UserId', 1)
+            params.append('UserId', global.global_userID)
             params.append('Title', this.postForm.Title)
             params.append('Content', this.postForm.Content)
             params.append('UserLists',this.userLists)

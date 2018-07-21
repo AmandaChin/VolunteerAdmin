@@ -173,6 +173,9 @@ export default {
   },
   created() {
     this.fetchA_AdminData()
+    var id = JSON.parse(localStorage.getItem('adminid'))
+    console.log('全局：'+id)
+    global.global_userID = id
   },
   methods: {
     fetchA_AdminData() {
@@ -181,7 +184,7 @@ export default {
       //   this.list = response.data.items
       //   this.listLoading = false
       // })
-        axios.get('http://localhost:3000/api/getA_AdminInfo').then(
+        axios.get('http://' + port.info.host + ':' + port.info.port + '/api/getA_AdminInfo').then(
         (res) => {
           this.list = res.data.list.rows
           console.log(res)
@@ -195,7 +198,7 @@ export default {
       //   this.list = response.data.items
       //   this.listLoading = false
       // })
-        axios.get('http://localhost:3000/api/getB_AdminInfo').then(
+        axios.get('http://' + port.info.host + ':' + port.info.port + '/api/getB_AdminInfo').then(
         (res) => {
           this.list = res.data.list.rows
           console.log(res)
@@ -246,7 +249,7 @@ export default {
         console.log( this.personalInfo.region);
       },
       handleUpdate(){
-        axios.post('http://localhost:3000/api/addAdmin',
+        axios.post('http://' + port.info.host + ':' + port.info.port + '/api/addAdmin',
         {
             theRes:this.getTheRes(this.type),
             Password:this.personalInfo.Password,
@@ -281,7 +284,7 @@ export default {
          var that=this;
         axios.post('http://' + port.info.host + ':' + port.info.port + '/api/getUserInfo',
         {
-          UserId:3
+          UserId:global.global_userID
         }).then(
           (res)=>{
 

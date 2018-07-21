@@ -105,7 +105,7 @@ export default {
     getList() {
       //this.listLoading = true
       //axios.get('http://' + port.info.host + ':' + port.info.port + '/api/getAllUser').then(
-        axios.get('http://localhost:3000/api/getOrdinaryUserInfo').then(
+        axios.get('http://' + port.info.host + ':' + port.info.port + '/api/getOrdinaryUserInfo').then(
         (res) => {
           this.list = res.data.list.rows
           console.log(res)

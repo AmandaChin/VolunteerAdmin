@@ -180,7 +180,7 @@ export default {
   },
   methods: {
     fetchB_AdminData() {
-        axios.get('http://localhost:3000/api/getB_AdminInfo').then(
+        axios.get('http://' + port.info.host + ':' + port.info.port + '/api/getB_AdminInfo').then(
         (res) => {
           this.list = res.data.list.rows
           this.totalDataNumber = res.data.list.count;
@@ -214,7 +214,7 @@ export default {
       },
       handleUpdate(){
         let that = this
-        axios.post('http://localhost:3000/api/addAdmin',
+        axios.post('http://' + port.info.host + ':' + port.info.port + '/api/addAdmin',
         {
             Account:this.personalInfo.Account,
             Password:this.personalInfo.Password,

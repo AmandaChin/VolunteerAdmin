@@ -127,13 +127,17 @@ export default {
 
     }
   },
-
+  created(){
+    var id = JSON.parse(localStorage.getItem('adminid'))
+    console.log('全局：'+id)
+    global.global_userID = id
+  },
     mounted() {
         // console.log(this.personalInfo.region)
          var that=this;
         axios.post('http://' + port.info.host + ':' + port.info.port + '/api/getUserInfo',
         {
-          UserId:178
+          UserId:global.global_userID
         }).then(
           (res)=>{
 
@@ -167,7 +171,7 @@ export default {
       handleUpdate(){
         axios.post('http://' + port.info.host + ':' + port.info.port + '/api/changeUserInformation',
         {
-            UserID:178,
+            UserID:global.global_userID,
             Gender:this.personalInfo.Gender,
             UserName:this.personalInfo.UserName,
             Name:this.personalInfo.Name,
