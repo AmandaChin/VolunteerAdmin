@@ -1,11 +1,7 @@
 <template>
   <!-- $t is vue-i18n global function to translate lang -->
   <div class="app-container">
-    <el-radio-group v-model="autoWidth" @change="setTypeHandler">
-      <el-radio label="A" border>A</el-radio>
-      <el-radio label="B" border>B</el-radio>
-    </el-radio-group>
-    <el-button style='margin:0 0 20px 20px;' type="primary" v-on:click="watchtable=false">添加管理员</el-button>
+    <el-button style='margin:0 0 20px 20px;' type="primary" v-on:click="watchtable=false">添加B类管理员</el-button>
     <el-button style='margin:0 0 20px 20px;' type="primary" v-on:click="watchtable=true">返回</el-button>
     <el-table style="margin-left:50px" v-if="watchtable==true" :data="list.slice((pageNo-1)*pageSize,pageNo*pageSize)" v-loading="listLoading" element-loading-text="拼命加载中" border fit highlight-current-row>
       <el-table-column align="center" label='Id' width="250">
@@ -40,10 +36,9 @@
                       :page-size="pageSize" :current-page.sync="pageNo" layout="total, prev, pager, next" :total="totalDataNumber">
       </el-pagination>
     </div>
-
 <template v-if="watchtable==false">
   <div class="personal">
-    <h1 >添加{{type}}类管理员</h1>
+    <h1 >添加B类管理员</h1>
       <el-form ref="form" :model="personalInfo" label-width="120px">
 
            <el-form-item label="用户名">
@@ -155,7 +150,6 @@ export default {
         }
       }
     return {
-      type:'A',
       loading: false,
      cityInfo: cityInfo.info.cityInfo,
       watchtable:true,
@@ -182,19 +176,9 @@ export default {
     }
   },
   created() {
-    this.fetchA_AdminData()
+    this.fetchB_AdminData()
   },
   methods: {
-    fetchA_AdminData() {
-        axios.get('http://localhost:3000/api/getA_AdminInfo').then(
-        (res) => {
-          this.list = res.data.list.rows
-          this.totalDataNumber = res.data.list.count;
-          console.log(res)
-          //this.listloading=false
-        }
-      )
-    },
     fetchB_AdminData() {
         axios.get('http://localhost:3000/api/getB_AdminInfo').then(
         (res) => {
@@ -205,32 +189,8 @@ export default {
         }
       )
     },
-    setTypeHandler(value){
-      this.type=value;
-      if(value=='A')this.fetchA_AdminData()
-      else if(value=='B')this.fetchB_AdminData()
-      console.log('改变之后的值：'+value)
-    },
-    getTheRes(value){
-      if(value=='A')return 1
-      else if(value=='B')return 2
-    },
-    handleDownload() {
-      this.downloadLoading = true
-      import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
-        const filterVal = ['id', 'title', 'author', 'pageviews', 'display_time']
-        const list = this.list
-        const data = this.formatJson(filterVal, list)
-        excel.export_json_to_excel({
-          header: tHeader,
-          data,
-          filename: this.filename,
-          autoWidth: this.autoWidth
-        })
-        this.downloadLoading = false
-      })
-    },
+    
+    
     formatJson(filterVal, jsonData) {
       return jsonData.map(v => filterVal.map(j => {
         if (j === 'timestamp') {
@@ -258,7 +218,7 @@ export default {
         {
             Account:this.personalInfo.Account,
             Password:this.personalInfo.Password,
-            theRes:this.getTheRes(this.type),
+            theRes:2,
             UserName:this.personalInfo.UserName,
             Gender:this.personalInfo.Gender,
             IDNumber:this.personalInfo.IDNumber,
@@ -274,11 +234,7 @@ export default {
                 var num=res.data.addtype;
                 console.log('函数返回值：'+num)
                 that.$message('添加成功')
-                if(num==1){
-                  that.fetchA_AdminData()
-                }else{
-                  that.fetchB_AdminData()
-                }
+                that.fetchB_AdminData()
             },
             
         )
