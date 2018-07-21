@@ -32,7 +32,7 @@ export default {
       let matched = this.$route.matched.filter(item => item.name)
       const first = matched[0]
       if (first && first.name !== 'dashboard') {
-        matched = [{ path: '/blockbrowser/index', meta: { title: 'dashboard' }}].concat(matched)
+        matched = [{ path: '/homepage', meta: { title: 'dashboard' }}].concat(matched)
       }
       this.levelList = matched
     }

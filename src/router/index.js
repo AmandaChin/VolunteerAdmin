@@ -24,7 +24,7 @@ import Layout from '@/views/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: () => import('@/views/login/index'), hidden: true },
+  { path: '/login',  component: () => import('@/views/login/index'), hidden: true },
   { path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden: true },
   { path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
   { path: '/401', component: () => import('@/views/errorPage/401'), hidden: true },
@@ -44,16 +44,14 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
-  
   {
-    path: '/blockbrowser',
+    path: '/homepage',
     component: Layout,
-    redirect: '/blockbrowser/index',
     children: [{
-      path: 'index',
+      path: '',
+      name: 'home',
       component: () => import('@/views/blockbrowser/index'),
-      name: 'blockbrowser',
-      meta: { title: '区块浏览', icon: 'documentation', noCache: true }
+      meta: { title: '区块浏览', icon: 'documentation' }
     }]
   },
   {
@@ -78,15 +76,27 @@ export const asyncRouterMap = [
   },
   {
     path: '/authority',
+    meta: {
+      title: '管理员管理',
+      icon: 'user' 
+    },
     component: Layout,
     children: [
       { path: 'AdminAuthority', 
       component: () => import('@/views/authority/AdminAuthority'), 
       name: 'AdminAuthority', 
       meta: { 
-        title: '管理员管理', 
+        title: '超管管理', 
         icon:'people',
-        roles: ['Superadmin', 'Aadmin']  
+        roles: ['Superadmin']  
+      }},
+      { path: 'AdminAuthority2', 
+      component: () => import('@/views/authority/AdminAuthority2'), 
+      name: 'AdminAuthority2', 
+      meta: { 
+        title: 'A管管理', 
+        icon:'people',
+        roles: ['Aadmin']  
       }}
     ]
   },
@@ -103,7 +113,20 @@ export const asyncRouterMap = [
         noCache: true,
         roles: ['Aadmin','Badmin']  
        }
-    }]
+    },
+    {
+      path: 'error',
+      component: () => import('@/views/errorPage/401'),
+      name: 'error',
+      meta: { 
+        title: '个人信息管理', 
+        icon: 'icon', 
+        noCache: true,
+        roles: ['Superadmin']  
+       }
+       
+    }
+  ]
   },
   {
     path: '/notice',

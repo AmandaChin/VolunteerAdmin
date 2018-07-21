@@ -52,8 +52,8 @@ const user = {
           console.log(response)
           const data = response.data
           commit('SET_ROLES', data.roles)
-          // commit('SET_TOKEN', data.token)
-          // setToken(response.data.token)
+          commit('SET_TOKEN', '123456')
+          setToken(response.data.token)
           resolve()
         }).catch(error => {
           reject(error)
