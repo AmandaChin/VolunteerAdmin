@@ -145,8 +145,8 @@ export default {
               }
               console.log(theLoginForm)
               theStore.dispatch('LoginByUsername', theLoginForm).then(() => {
-                  theRouter.push({ name: 'blockbrowser' })
-                  // theRouter.push({ name: 'register' })
+                 theRouter.push({ path: '/homepage' })
+                 location.reload()
               }).catch(() => {
                 // this.$error('提交格式错误');
                 //Message('提交格式错误')
