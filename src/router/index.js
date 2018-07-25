@@ -24,17 +24,16 @@ import Layout from '@/views/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login',  component: () => import('@/views/login/index'), hidden: true },
+  { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden: true },
   { path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
   { path: '/401', component: () => import('@/views/errorPage/401'), hidden: true },
   {
-    path:'',
+    path: '',
     component: () => import('@/views/login/index'),
-    name:'login'
+    name: 'login'
   }
-  
-  
+
 ]
 
 export default new Router({
@@ -59,7 +58,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/manageuser/index',
     // alwaysShow: true,
-     // will always show the root menu
+    // will always show the root menu
     // meta: {
     //   title: '用户管理',
     //   icon: 'user'
@@ -70,7 +69,7 @@ export const asyncRouterMap = [
       name: 'manageuser',
       meta: {
         title: '用户管理',
-        icon: 'user' 
+        icon: 'user'
       }
     }]
   },
@@ -78,37 +77,37 @@ export const asyncRouterMap = [
     path: '/authority',
     meta: {
       title: '管理员管理',
-      icon: 'user' 
+      icon: 'user'
     },
     component: Layout,
     children: [
-      { path: 'AdminAuthority', 
-      component: () => import('@/views/authority/AdminAuthority'), 
-      name: 'AdminAuthority', 
-      meta: { 
-        title: '管理员管理', 
-        icon:'people',
-        roles: ['Superadmin']  
-      }},
-      { path: 'AdminAuthority2', 
-      component: () => import('@/views/authority/AdminAuthority2'), 
-      name: 'AdminAuthority2', 
-      meta: { 
-        title: '管理员管理', 
-        icon:'people',
-        roles: ['Aadmin']  
-      }},
+      { path: 'AdminAuthority',
+        component: () => import('@/views/authority/AdminAuthority'),
+        name: 'AdminAuthority',
+        meta: {
+          title: '管理员管理',
+          icon: 'people',
+          roles: ['Superadmin']
+        }},
+      { path: 'AdminAuthority2',
+        component: () => import('@/views/authority/AdminAuthority2'),
+        name: 'AdminAuthority2',
+        meta: {
+          title: '管理员管理',
+          icon: 'people',
+          roles: ['Aadmin']
+        }},
       {
         path: 'error',
         component: () => import('@/views/errorPage/401'),
         name: 'error',
-        meta: { 
-          title: '管理员管理', 
-          icon: 'people', 
+        meta: {
+          title: '管理员管理',
+          icon: 'people',
           noCache: true,
-          roles: ['Badmin']  
-         }
-         
+          roles: ['Badmin']
+        }
+
       }
     ]
   },
@@ -119,26 +118,26 @@ export const asyncRouterMap = [
       path: 'personal',
       component: () => import('@/views/personal/index'),
       name: 'personal',
-      meta: { 
-        title: '个人信息管理', 
-        icon: 'icon', 
+      meta: {
+        title: '个人信息管理',
+        icon: 'icon',
         noCache: true,
-        roles: ['Aadmin','Badmin']  
-       }
+        roles: ['Aadmin', 'Badmin']
+      }
     },
     {
       path: 'error',
       component: () => import('@/views/errorPage/401'),
       name: 'error',
-      meta: { 
-        title: '个人信息管理', 
-        icon: 'icon', 
+      meta: {
+        title: '个人信息管理',
+        icon: 'icon',
         noCache: true,
-        roles: ['Superadmin']  
-       }
-       
+        roles: ['Superadmin']
+      }
+
     }
-  ]
+    ]
   },
   {
     path: '/notice',
@@ -148,22 +147,35 @@ export const asyncRouterMap = [
       path: 'index',
       component: () => import('@/views/notice/index'),
       name: 'notice',
-      meta: { title: '通知管理', icon: 'guide', noCache: true }
-    }]
+      meta: { title: '通知管理', icon: 'guide', noCache: true, roles: ['Aadmin', 'Badmin'] }
+    },
+    {
+      path: 'error',
+      component: () => import('@/views/errorPage/401'),
+      name: 'error',
+      meta: {
+        title: '通知管理',
+        icon: 'people',
+        noCache: true,
+        roles: ['Superadmin']
+      }
+
+    }
+    ]
   },
 
   {
-    path: '/export-selected-excel', 
-    component: () => import('@/views/notice/selectExcel'), 
-    name: 'selectExcel', 
-    meta: { title: "用户选择" }
+    path: '/export-selected-excel',
+    component: () => import('@/views/notice/selectExcel'),
+    name: 'selectExcel',
+    meta: { title: '用户选择' }
   },
 
   {
-    path: '/postNotice', 
-    component: () => import('@/views/notice/postNotice'), 
-    name: 'postNotice', 
-    meta: { title: "发布新通知" }
+    path: '/postNotice',
+    component: () => import('@/views/notice/postNotice'),
+    name: 'postNotice',
+    meta: { title: '发布新通知' }
   }
 ]
 
