@@ -1,29 +1,51 @@
 <template>
-  <div class="app-container documentation-container">
-    <!-- <a class="document-btn" target='_blank' href="https://panjiachen.github.io/vue-element-admin-site/">{{$t('documentation.documentation')}}</a>
-    <a class="document-btn" target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">{{$t('documentation.github')}}</a>
-    <dropdown-menu style="float:left;margin-left:50px;" title='系列文章' :items='articleList'></dropdown-menu> -->
-  </div>
+  <div class="documentation-container">
+  <slide-show :slides="slides" :inv="slideSpeed"></slide-show>
+  <el-button type="primary" size="medium"  @click="handleSubmit">跳 转</el-button>
+  
+</div>
 </template>
 <script>
 import DropdownMenu from '@/components/Share/dropdownMenu'
+import slideShow from '@/components/SlideShow/slideShow'
 
 export default {
   name: 'documentation',
-  components: { DropdownMenu },
+  components: { DropdownMenu, slideShow },
   data() {
     return {
-      articleList: [
-        { title: '基础篇', href: 'https://segmentfault.com/a/1190000009275424' },
-        { title: '登录权限篇', href: 'https://segmentfault.com/a/1190000009506097' },
-        { title: '实战篇', href: 'https://segmentfault.com/a/1190000009762198' },
-        { title: 'vueAdmin-template 篇', href: 'https://segmentfault.com/a/1190000010043013' },
-        { title: '自行封装 component', href: 'https://segmentfault.com/a/1190000009090836' },
-        { title: '优雅的使用 icon', href: 'https://segmentfault.com/a/1190000012213278' }
+      errGif: 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
+      slides: [
+        {
+          src: require('./image/1.jpg'),
+          title: '欢迎志愿者的加入',
+          href: 'http://10.10.1.201:18000'
+        },
+        {
+          src: require('./image/2.jpg'),
+          title: '像小天使般的志愿者',
+          href: 'http://10.10.1.201:18000'
+        },
+        {
+          src: require('./image/3.jpg'),
+          title: '志愿服务从今天开始',
+          href: 'http://10.10.1.201:18000'
+        },
+        {
+          src: require('./image/4.jpg'),
+          title: '志愿服务从小做起',
+          href: 'http://10.10.1.201:18000'
+        }
       ]
+    }
+  },
+  methods: {
+    handleSubmit() {
+      window.location.href = 'http://10.10.1.201:18000'
     }
   }
 }
+// window.location.href="http://localhost:8000"
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
