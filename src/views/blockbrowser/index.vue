@@ -19,29 +19,29 @@ export default {
         {
           src: require('./image/1.jpg'),
           title: '欢迎志愿者的加入',
-          href: 'http://10.10.1.201:18000'
+          href: 'http://opengle.com:8000'
         },
         {
           src: require('./image/2.jpg'),
           title: '像小天使般的志愿者',
-          href: 'http://10.10.1.201:18000'
+          href: 'http://opengle.com:8000'
         },
         {
           src: require('./image/3.jpg'),
           title: '志愿服务从今天开始',
-          href: 'http://10.10.1.201:18000'
+          href: 'http://opengle.com:8000'
         },
         {
           src: require('./image/4.jpg'),
           title: '志愿服务从小做起',
-          href: 'http://10.10.1.201:18000'
+          href: 'http://opengle.com:8000'
         }
       ]
     }
   },
   methods: {
     handleSubmit() {
-      window.location.href = 'http://10.10.1.201:18000'
+      window.location.href = 'http://opengle.com:8000'
     }
   }
 }
