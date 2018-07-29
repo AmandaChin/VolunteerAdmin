@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/api':{
         //target: '10.11.107.122:3000/api/',
-        target: 'http://localhost:3000/api/',
+        target: 'http://opengle.com:3000/api/',
       }
     },
 
@@ -32,7 +32,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: true,
+    useEslint: false,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
@@ -72,7 +72,7 @@ module.exports = {
      * then assetsPublicPath should be set to "/bar/".
      * In most cases please use '/' !!!
      */
-    assetsPublicPath: '/vue-element-admin/', // If you are deployed on the root path, please use '/'
+    assetsPublicPath: './', // If you are deployed on the root path, please use '/'
 
     /**
      * Source Maps
